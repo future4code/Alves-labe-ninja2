@@ -1,25 +1,59 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import HomeScreen from './components/HomeScreen/HomeScreen'
+import RegistrationScreen from './components/RegistrationScreen/RegistrationScreen'
+import ContractingScreen from './components/ContractingScreen/ContractingScreen'
+import DetailsScreen from './components/DetailsScreen/DetailsScreen'
+import CardScreen from './components/CardScreen/CardScreen'
+import Header from './components/Header/Header'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default class App extends Component {
+  state = {
+    currentScreen: "home"
+  }
+
+  selectScreen = () => {
+    switch (this.state.currentScreen) {
+      case "home":
+        return <HomeScreen />
+      case "registration":
+        return <RegistrationScreen />
+      case "contracting":
+        return <ContractingScreen />
+      case "details":
+        return <DetailsScreen />
+      case "card":
+        return <CardScreen />
+      default:
+        return <div>Erro! Página não encontrada!</div>
+    }
+  }
+
+  goToHome = () => {
+    this.setState({ currentScreen: "home" })
+  }
+
+  goToRegistration = () => {
+    this.setState({ currentScreen: "registration" })
+  }
+
+  goToContracting = () => {
+    this.setState({ currentScreen: "contracting" })
+  }
+
+  goToDetails = () => {
+    this.setState({ currentScreen: "details" })
+  }
+
+  goToCard = () => {
+    this.setState({ currentScreen: "card" })
+  }
+
+  render() {
+    return (
+      <div>
+        <Header goToHome={this.goToHome} goToCard={this.goToCard} />
+        {this.selectScreen()}
+      </div>
+    )
+  }
 }
-
-export default App;
