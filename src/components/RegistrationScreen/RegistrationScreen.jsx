@@ -3,6 +3,7 @@ import axios from "axios"
 import { BASE_URL, headers } from '../../constants/credentials'
 import Select from 'react-select'
 import { Flex, Alert, AlertIcon, Spacer, Heading, ButtonGroup, Button, Input, Text, Box } from '@chakra-ui/react'
+import { toast } from 'react-toastify';
 
 const options = [
     { value: 1, label: " Cartão de Débito" },
@@ -43,14 +44,15 @@ export default class RegistrationScreen extends Component {
                 price: "",
                 payment: [],
                 date: "",
-                resposta: true,
-                status: "success"
+          
             })
+            toast.success("Novo serviço adicionado")
 
 
         } catch (error) {
             console.log(error.response.data.message)
             this.setState({ resposta: true, status: "error" })
+            toast.error("Algo deu errado, tente novamente")
         }
     }
 
@@ -76,39 +78,12 @@ export default class RegistrationScreen extends Component {
         this.setState({ date: event.target.value })
     }
 
-    // message = () => {
-    //     switch (this.state.status) {
-    //         case "success":
-    //             return <Alert status="success">
-    //                 <AlertIcon />
-    //                 O serviço foi cadastrado com sucesso!
-    //             </Alert>
-    //         case "error":
-    //             return <Alert status="error">
-    //             <AlertIcon />
-    //             Tente novamente!
-    //         </Alert>
-    //         default:
-    //             return ""
-
-    //     }
-    // }
 
     render() {
 
         return (
             <Flex direction='column' mt='1rem' alignItems='center' >
-                <Box mb='1rem' borderRadius='1rem'>
-                    {/* {() => this.message()} */}
-
-                    {this.state.resposta &&
-                        <Alert status={this.state.status}>
-                            <AlertIcon />
-                             Foi enviado com sucesso
-                        </Alert>
-                    }
-                </Box>
-
+               
                 <Flex shadow='dark-lg' borderRadius='2rem' p='1rem' bg='blue.200' direction="column" w='35rem' h='32rem'>
                     <Text color='beige.200' textAlign='center' fontSize='2rem'>Cadastre-se para ser um Ninja!</Text>
                     <Input bg='white' value={this.state.title} onChange={this.handleTitle} mt='8%' mb='4%' placeholder='Título do anúncio'></Input>

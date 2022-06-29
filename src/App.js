@@ -5,6 +5,9 @@ import ContractingScreen from './components/ContractingScreen/ContractingScreen'
 import DetailsScreen from './components/DetailsScreen/DetailsScreen'
 import CardScreen from './components/CardScreen/CardScreen'
 import Header from './components/Header/Header'
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default class App extends Component {
   state = {
@@ -51,6 +54,7 @@ export default class App extends Component {
   render() {
     return (
       <div>
+        <ToastContainer />
         <Header goToHome={this.goToHome} goToCard={this.goToCard} />
         {this.selectScreen()}
       </div>
