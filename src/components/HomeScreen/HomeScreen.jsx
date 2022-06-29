@@ -1,9 +1,18 @@
 import React, { Component } from 'react'
+import { ChakraProvider } from '@chakra-ui/react'
+import { theme } from '../../theme'
+import { Box } from '@chakra-ui/react'
 
 export default class HomeScreen extends Component {
+  
   render() {
     return (
-      <div>HomeScreen</div>
+      <ChakraProvider theme={theme}>
+
+        <Box bg='blue.50'>HomeScreen</Box>
+        <Box bg='red.200'>HomeScreen</Box>
+        <Box bg='beige.200'>HomeScreen</Box>
+      </ChakraProvider>
     )
   }
 }
