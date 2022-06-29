@@ -14,7 +14,7 @@ export default class App extends Component {
   selectScreen = () => {
     switch (this.state.currentScreen) {
       case "home":
-        return <HomeScreen />
+        return <HomeScreen goToRegistration={this.goToRegistration} goToContracting={this.goToContracting} />
       case "registration":
         return <RegistrationScreen />
       case "contracting":
