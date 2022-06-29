@@ -34,8 +34,8 @@ export default class RegistrationScreen extends Component {
             dueDate: this.state.date
         }
         try {
-            const resposta = await axios.post(`${BASE_URL}/jobs`, newJob, headers)
-            console.log(resposta)
+            const res = await axios.post(`${BASE_URL}/jobs`, newJob, headers)
+            console.log(res)
             alert(`Cadastro afetuado`)
             this.setState({
                 title: "",
