@@ -9,9 +9,9 @@ export default class HomeScreen extends Component {
     return (
       <ChakraProvider theme={theme}>
 
-        <Box bg='blue.150'>HomeScreen</Box>
-        <Box bg='red.150'>HomeScreen</Box>
-        <Box bg='beige.150'>HomeScreen</Box>
+        <Box bg='blue.50'>HomeScreen</Box>
+        <Box bg='red.200'>HomeScreen</Box>
+        <Box bg='beige.200'>HomeScreen</Box>
       </ChakraProvider>
     )
   }
