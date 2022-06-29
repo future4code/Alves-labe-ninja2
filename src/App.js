@@ -8,7 +8,7 @@ import Header from './components/Header/Header'
 
 export default class App extends Component {
   state = {
-    currentScreen: "registration"
+    currentScreen: "home"
   }
 
   selectScreen = () => {
