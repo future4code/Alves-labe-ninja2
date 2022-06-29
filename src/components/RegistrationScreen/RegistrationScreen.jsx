@@ -21,7 +21,8 @@ export default class RegistrationScreen extends Component {
         price: "",
         payment: [],
         date: "",
-        status: "failed"
+        status: "error",
+        resposta: false
     }
 
 
@@ -42,11 +43,14 @@ export default class RegistrationScreen extends Component {
                 price: "",
                 payment: [],
                 date: "",
+                resposta: true,
+                status: "success"
             })
-        
+
 
         } catch (error) {
             console.log(error.response.data.message)
+            this.setState({ resposta: true, status: "error" })
         }
     }
 
@@ -72,9 +76,39 @@ export default class RegistrationScreen extends Component {
         this.setState({ date: event.target.value })
     }
 
+    // message = () => {
+    //     switch (this.state.status) {
+    //         case "success":
+    //             return <Alert status="success">
+    //                 <AlertIcon />
+    //                 O serviço foi cadastrado com sucesso!
+    //             </Alert>
+    //         case "error":
+    //             return <Alert status="error">
+    //             <AlertIcon />
+    //             Tente novamente!
+    //         </Alert>
+    //         default:
+    //             return ""
+
+    //     }
+    // }
+
     render() {
+
         return (
-            <Flex mt='1rem' justifyContent='center' >
+            <Flex direction='column' mt='1rem' alignItems='center' >
+                <Box mb='1rem' borderRadius='1rem'>
+                    {/* {() => this.message()} */}
+
+                    {this.state.resposta &&
+                        <Alert status={this.state.status}>
+                            <AlertIcon />
+                             Foi enviado com sucesso
+                        </Alert>
+                    }
+                </Box>
+
                 <Flex shadow='dark-lg' borderRadius='2rem' p='1rem' bg='blue.200' direction="column" w='35rem' h='32rem'>
                     <Text color='beige.200' textAlign='center' fontSize='2rem'>Cadastre-se para ser um Ninja!</Text>
                     <Input bg='white' value={this.state.title} onChange={this.handleTitle} mt='8%' mb='4%' placeholder='Título do anúncio'></Input>
