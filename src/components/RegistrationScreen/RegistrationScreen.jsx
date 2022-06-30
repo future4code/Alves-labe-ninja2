@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import axios from "axios"
 import { BASE_URL, headers } from '../../constants/credentials'
 import Select from 'react-select'
-import { Flex, Spacer, Heading, ButtonGroup, Button, Input, Text, Box } from '@chakra-ui/react'
+import { Flex, Alert, AlertIcon, Spacer, Heading, ButtonGroup, Button, Input, Text, Box } from '@chakra-ui/react'
+import { toast } from 'react-toastify';
 
 const options = [
     { value: 1, label: " Cartão de Débito" },
@@ -20,12 +21,13 @@ export default class RegistrationScreen extends Component {
         description: "",
         price: "",
         payment: [],
-        date: ""
+        date: "",
+        status: "error",
+        resposta: false
     }
 
 
     createNewJob = async () => {
-        console.log("clicou")
         const newJob = {
             title: this.state.title,
             description: this.state.description,
@@ -34,7 +36,7 @@ export default class RegistrationScreen extends Component {
             dueDate: this.state.date
         }
         try {
-            const res = await axios.post(`${BASE_URL}/jobs`, newJob, headers)
+            const resposta = await axios.post(`${BASE_URL}/jobs`, newJob, headers)
             console.log(res)
             alert(`Cadastro afetuado`)
             this.setState({
@@ -43,10 +45,15 @@ export default class RegistrationScreen extends Component {
                 price: "",
                 payment: [],
                 date: "",
+          
             })
+            toast.success("Novo serviço adicionado")
+
 
         } catch (error) {
             console.log(error.response.data.message)
+            this.setState({ resposta: true, status: "error" })
+            toast.error("Algo deu errado, tente novamente")
         }
     }
 
@@ -73,25 +80,26 @@ export default class RegistrationScreen extends Component {
     }
 
 
-
     render() {
+
         return (
-            <Flex justifyContent='center'>
-                <Flex direction="column" w='35rem' h='43rem' bg='red.150'>
-                    <h1>Cadastre-se para ser um Ninja!</h1>
-                    <Text>Teste</Text>
-                    <Input value={this.state.title} onChange={this.handleTitle} mt='8%' mb='4%' placeholder='Título do anúncio'></Input>
-                    <Input value={this.state.description} onChange={this.handleDescripton} mb='4%' placeholder='Descrição do serviço prestado'></Input>
-                    <Input value={this.state.price} onChange={this.handlePrice} mb='4%' type='number' placeholder='Informe o preço'></Input>
+            <Flex direction='column' mt='1rem' alignItems='center' >
+               
+                <Flex shadow='dark-lg' borderRadius='2rem' p='1rem' bg='blue.200' direction="column" w='35rem' h='32rem'>
+                    <Text color='beige.200' textAlign='center' fontSize='2rem'>Cadastre-se para ser um Ninja!</Text>
+                    <Input bg='white' value={this.state.title} onChange={this.handleTitle} mt='8%' mb='4%' placeholder='Título do anúncio'></Input>
+                    <Input bg='white' value={this.state.description} onChange={this.handleDescripton} mb='4%' placeholder='Descrição do serviço prestado'></Input>
+                    <Input bg='white' value={this.state.price} onChange={this.handlePrice} mb='4%' type='number' placeholder='Informe o preço'></Input>
                     <Select
-                    isMulti
-                    options={options} 
-                    placeholder='Informe as formas de pagamento aceitas' 
-                    onChange={this.handlePayment}
-                    onSelect={this.handlePayment} 
+                        isMulti
+                        options={options}
+                        placeholder='Informe as formas de pagamento aceitas'
+                        onChange={this.handlePayment}
+                        onSelect={this.handlePayment}
                     />
-                    <Input value={this.state.date} onChange={this.handleDate} type='date'  mt='4%' mb='4%' placeholder='Informe o prazo disponível' ></Input>
-                    <Button onClick={() => this.createNewJob()}>Cadastrar Serviço</Button>
+                    <Input bg='white' value={this.state.date} onChange={this.handleDate} type='date' mt='4%' mb='4%' placeholder='Informe o prazo disponível' ></Input>
+                    <Button bg='beige.200' color='blue.200' fontSize='1.5rem' onClick={() => this.createNewJob()}>Cadastrar Serviço</Button>
+
                 </Flex>
             </Flex>
         )
