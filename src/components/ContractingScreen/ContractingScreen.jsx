@@ -81,8 +81,7 @@ export default class ContractingScreen extends Component {
             return currentJob.price - nextJob.price
           case "priceDesc":
             return -(currentJob.price - nextJob.price)
-          // default:
-          //   return currentJob.title.localeCompare(nextJob.title)
+          
 
         }
       })
@@ -113,6 +112,9 @@ export default class ContractingScreen extends Component {
             filterMax={this.state.filterMaxValue}
             changeName={this.handleFilterNameValue}
             filterName={this.state.filterNameValue}
+            changeOrder={this.handleSortingParameter}
+            filterOrder={this.state.sortingParameter}
+            
 
           />
         </Box>
