@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import { BASE_URL, headers } from '../../constants/credentials'
-import { ChakraProvider } from '@chakra-ui/react'
-import { Flex, Spacer, Heading, ButtonGroup, Button, Input, Select, Text, Box} from '@chakra-ui/react'
+import { Flex, Center, Spacer, Heading, ButtonGroup, Button, Input, Select, Text, Box} from '@chakra-ui/react'
 
 export default class DetailsScreen extends Component {
   state = {
@@ -38,20 +37,20 @@ export default class DetailsScreen extends Component {
 
   render() {
     return (
-      <div>
-        <ChakraProvider>
-          <Flex direction='column'>
-            <Box>
+      
+        
+          <Flex direction='column' justify='center' align='center'>
+            
               <Heading>{this.state.title}</Heading>
               <Text>{this.state.description}</Text>
               <Text>{this.state.price}</Text>
               <Text>{this.state.payment}</Text>
               <Text>{this.state.date}</Text>
-              <Button onClick={this.props.goToContracting}>Voltar</Button>
-            </Box>
+              <Button maxW='20' onClick={this.props.goToContracting}>Voltar</Button>
+            
           </Flex>
-        </ChakraProvider>
-       </div>
+        
+       
     )
   }
 }

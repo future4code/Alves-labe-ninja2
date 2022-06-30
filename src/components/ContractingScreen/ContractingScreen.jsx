@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
-import ServiceCard from '../ServiceCard/ServiceCard'
 import axios from "axios"
 import { BASE_URL, headers } from '../../constants/credentials'
-import { ChakraProvider } from '@chakra-ui/react'
 import { Flex, Spacer, Heading, ButtonGroup, Button, Input, Select, Text, Box} from '@chakra-ui/react'
 import Filters from '../Filters/Filters'
+import {CheckCircleIcon,InfoIcon} from '@chakra-ui/icons'
 // import DetailsScreen from '../DetailsScreen/DetailsScreen'
 
 export default class ContractingScreen extends Component {
@@ -59,32 +58,32 @@ export default class ContractingScreen extends Component {
       return this.state.filterMinValue == "" || job.price >= this.state.filterMinValue
     })
     .filter((job) => {
-      return this.state.filterMinValue == "" || job.price <= this.state.filterMaxValue
+      return this.state.filterMaxValue == "" || job.price <= this.state.filterMaxValue
     })
     .filter((job) => {
       return job.title.toLowerCase().includes(this.state.filterNameValue.toLowerCase()) || job.description.toLowerCase().includes(this.state.filterNameValue.toLowerCase())
     })
     .map((job) => {
       return (
-        <ChakraProvider key={job.id}>
-          <Flex direction='column' bg='red.150'>
-            <Box>
-              <Heading>{job.title}</Heading>
+        
+          
+            <Flex borderRadius='10px' border='1px' borderColor='purple.700' bg='purple.200' minW='250px' gap='10px' direction='column' m='5px' p='15px' key={job.id}>
+              <Heading textAlign='center'>{job.title}</Heading>
               <Text>Preço: R${job.price}</Text>
-              <Text>Prazo: {job.duoDate}</Text>
+              <Text>Prazo: {job.dueDate}</Text>
               <Text>{job.description}</Text>
-              <Button 
+              <Button  colorScheme='purple' rightIcon={<InfoIcon />} iconSpacing='2'
               onClick={() => this.props.goToDetails(job.id)}>Detalhes</Button>
-              <Button>Adicionar ao carrinho</Button>
-            </Box>
-          </Flex>
-        </ChakraProvider>
+              <Button colorScheme='purple' rightIcon={<CheckCircleIcon />} iconSpacing='1'>Contratar</Button>
+            </Flex>
+          
+        
       )
     })
 
     return (
-      <div>
-        <p>ContractingScreen</p>
+      <Flex direction='column' bg='purple.100'>
+        <Box>
         <Filters 
         changeMin={this.handleFilterMinValue}
         filterMin={this.state.filterMinValue}
@@ -95,8 +94,11 @@ export default class ContractingScreen extends Component {
         changeOrder={this.handleFilterOrderValue}
         filterOrder={this.state.filterOrderValue}
         />
+        </Box>
+        <Flex justify='center' wrap='wrap' mt='20px'>
         {displayAllJobs}
-      </div>
+        </Flex>
+      </Flex>
     )
   }
 }
