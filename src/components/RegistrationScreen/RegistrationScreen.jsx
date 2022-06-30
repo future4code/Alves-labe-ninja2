@@ -38,18 +38,14 @@ export default class RegistrationScreen extends Component {
         try {
             const res = await axios.post(`${BASE_URL}/jobs`, newJob, headers)
             console.log(res)
-            alert(`Cadastro afetuado`)
             this.setState({
                 title: "",
                 description: "",
                 price: "",
                 payment: [],
                 date: "",
-          
             })
             toast.success("Novo serviço adicionado")
-
-
         } catch (error) {
             console.log(error.response.data.message)
             this.setState({ resposta: true, status: "error" })
