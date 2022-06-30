@@ -27,7 +27,20 @@ export default class Filters extends Component {
                 value={this.props.filterMax} 
                 placeholder="Valor máximo"
                 />
-                {/* FALTA O SELECT */}
+                
+                <Select
+                  name ="sort"
+                  focusBorderColor='purple.400'  _placeholder={{opacity: '0.8', color: 'white'}} maxW='300px' bg='purple.300' mt='20px'
+                  placeholder='Ordenar por:'
+                  onChange={this.props.changeOrder}
+                  onSelect={this.props.filterOrder}
+                >
+                  <option value="title">Título</option>
+                  <option value="dueDate">Prazo</option>
+                  <option value="priceAsc">Preço crescente</option>
+                  <option value="priceDesc">Preço Decrescente</option>
+                  
+                </Select>
             </Flex>
         </ChakraProvider>
       </div>
