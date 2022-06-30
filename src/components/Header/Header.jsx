@@ -8,10 +8,11 @@ export default class Header extends Component {
     shopping: false 
   }
 
+ 
+
   showCart  = () => {
   this.state.shopping = !this.state.shopping
   this.setState ({ shopping: this.state.shopping})
-  
   }
 
   render() {

@@ -11,21 +11,22 @@ import Cart from './components/Cart/Cart';
 export default class App extends Component {
   state = {
     currentScreen: "home",
-    clickedJobId: ""
-  }
+    clickedJobId: "",
+    IdItemsCart: []
+   }
 
   selectScreen = () => {
     switch (this.state.currentScreen) {
       case "home":
-        return <HomeScreen goToRegistration={this.goToRegistration} goToContracting={this.goToContracting} goToCard={this.goToCard} />
+        return <HomeScreen goToRegistration={this.goToRegistration} goToContracting={this.goToContracting} goToCard={this.goToCard}/>
       case "registration":
         return <RegistrationScreen />
       case "contracting":
-        return <ContractingScreen goToDetails={this.goToDetails} />
+        return <ContractingScreen goToDetails={this.goToDetails} clickAddJob={this.clickAddJob} />
       case "details":
         return <DetailsScreen goToContracting={this.goToContracting} jobId={this.state.clickedJobId} />
       case "Card" :
-        return <Cart jobId={this.state.clickedJobId}    /> 
+        return <Cart clickAddJob={this.clickAddJob} IdItemsCart={this.state.IdItemsCart}/> 
       default:
         return <div>Erro! Página não encontrada!</div>
     }
@@ -47,8 +48,15 @@ export default class App extends Component {
     this.setState({ currentScreen: "details", clickedJobId: jobId })
   }
 
-  goToCard = () => {
-    this.setState({ currentScreen: "card" })
+  goToCard = (jobId) => {
+    this.setState({ currentScreen: "card", clickedJobId: jobId })
+  }
+
+  clickAddJob = (jobId) => {
+    console.log("Clicou no add")
+    console.log(jobId)
+    this.state.IdItemsCart = [...this.state.IdItemsCart, jobId]
+    this.setState({IdItemsCart: this.state.IdItemsCart})
   }
 
   render() {

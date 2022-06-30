@@ -5,6 +5,7 @@ import { Flex, Spacer, Heading, ButtonGroup, Button, Input, Select, Text, Box } 
 import Filters from '../Filters/Filters'
 import { CheckCircleIcon, InfoIcon } from '@chakra-ui/icons'
 import { toast } from 'react-toastify'
+import Cart from '../Cart/Cart'
 // import DetailsScreen from '../DetailsScreen/DetailsScreen'
 
 export default class ContractingScreen extends Component {
@@ -14,11 +15,9 @@ export default class ContractingScreen extends Component {
     filterMaxValue: '',
     filterNameValue: '',
     filterOrderValue: 1,
-    filterCar: [],
-    totalCar: 0,
   }
 
-  /*  FUNÇÕES PARA ATUALIZAR OS INPUTS DOS FILTROS */
+   /*  FUNÇÕES PARA ATUALIZAR OS INPUTS DOS FILTROS */
 
   handleFilterMinValue = (event) => {
     this.setState({ filterMinValue: event.target.value })
@@ -53,20 +52,10 @@ export default class ContractingScreen extends Component {
     }
   }
 
-  onClickAdd = (id) => {
-    this.state.list.map((job) => {
-      if (job.id === id) {
-        this.state.filterCar = [...this.state.filterCar, job]
-        this.setState({ filterCar: this.state.filterCar })
-        this.setState({ totalCar: this.state.totalCar + job.price })
-      }
-    })
-    toast.success("Item adicionado com sucesso")
-  }
-
-
 
   render() {
+    
+    <Cart filterCar={this.state.filterCar} list={this.state.list} totalCar={this.state.totalCar} />
 
     /* FALTA O SORT */
     const displayAllJobs = this.state.list.filter((job) => {
@@ -90,7 +79,7 @@ export default class ContractingScreen extends Component {
             <Button bg='beige.200' color='blue.200' rightIcon={<InfoIcon color='red.200' />} iconSpacing='2'
               onClick={() => this.props.goToDetails(job.id)}>Detalhes</Button>
             <Button bg='beige.200' color='blue.200' mt='1.2rem' rightIcon={<CheckCircleIcon color='red.200' />} iconSpacing='1'
-            onClick={() => this.onClickAdd(job.id)}> Contratar</Button>
+            onClick={() => this.props.clickAddJob(job.id)}> Contratar</Button>
             </Flex>
           </Flex>
         )
