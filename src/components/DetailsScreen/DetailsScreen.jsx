@@ -37,8 +37,7 @@ export default class DetailsScreen extends Component {
 
   render() {
     return (
-      
-        
+
           <Flex direction='column' justify='center' align='center'>
             
               <Heading>{this.state.title}</Heading>

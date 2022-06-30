@@ -4,6 +4,8 @@ import { BASE_URL, headers } from '../../constants/credentials'
 import { Flex, Spacer, Heading, ButtonGroup, Button, Input, Select, Text, Box } from '@chakra-ui/react'
 import Filters from '../Filters/Filters'
 import { CheckCircleIcon, InfoIcon } from '@chakra-ui/icons'
+import { toast } from 'react-toastify'
+import Cart from '../Cart/Cart'
 // import DetailsScreen from '../DetailsScreen/DetailsScreen'
 
 export default class ContractingScreen extends Component {
@@ -12,10 +14,10 @@ export default class ContractingScreen extends Component {
     filterMinValue: '',
     filterMaxValue: '',
     filterNameValue: '',
-    sortingParameter: 'dueDate',
+    sortingParameter: '',
   }
 
-  /*  FUNÇÕES PARA ATUALIZAR OS INPUTS DOS FILTROS */
+   /*  FUNÇÕES PARA ATUALIZAR OS INPUTS DOS FILTROS */
 
   handleFilterMinValue = (event) => {
     this.setState({ filterMinValue: event.target.value })
@@ -28,6 +30,7 @@ export default class ContractingScreen extends Component {
   handleFilterNameValue = (event) => {
     this.setState({ filterNameValue: event.target.value })
   }
+
 
   handleSortingParameter = (event) => {
     this.setState({ sortingParameter: event.target.value })
@@ -43,6 +46,7 @@ export default class ContractingScreen extends Component {
     try {
       const res = await axios.get(`${BASE_URL}/jobs`, headers)
       this.setState({ list: res.data.jobs })
+
     }
     catch (error) {
       console.log(error.response.data.message)
@@ -55,6 +59,7 @@ export default class ContractingScreen extends Component {
   }
 
   render() {
+
     const displayAllJobs = this.state.list.filter((job) => {
       return this.state.filterMinValue == "" || job.price >= this.state.filterMinValue
     })
@@ -62,6 +67,7 @@ export default class ContractingScreen extends Component {
         return this.state.filterMaxValue == "" || job.price <= this.state.filterMaxValue
       })
       .filter((job) => {
+
         return job.title.toLowerCase().includes(this.state.filterNameValue.toLowerCase())
       })
       .sort((currentJob, nextJob) => {
@@ -92,12 +98,13 @@ export default class ContractingScreen extends Component {
               onClick={() => this.props.goToDetails(job.id)}>Detalhes
             </Button>
             <Button colorScheme='purple' rightIcon={<CheckCircleIcon />} iconSpacing='1'>Contratar</Button>
+
           </Flex>
         )
       })
 
     return (
-      <Flex direction='column' bg='purple.100'>
+      <Flex direction='column' bg='white'>
         <Box>
           <Filters
             changeMin={this.handleFilterMinValue}
@@ -106,8 +113,7 @@ export default class ContractingScreen extends Component {
             filterMax={this.state.filterMaxValue}
             changeName={this.handleFilterNameValue}
             filterName={this.state.filterNameValue}
-            changeOrder={this.handleSortingParameter}
-            filterOrder={this.state.sortingParameter}
+
           />
         </Box>
         <Flex justify='center' wrap='wrap' mt='20px'>
