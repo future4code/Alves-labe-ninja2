@@ -11,7 +11,8 @@ import 'react-toastify/dist/ReactToastify.css';
 
 export default class App extends Component {
   state = {
-    currentScreen: "home"
+    currentScreen: "contracting",
+    clickedJobId: ""
   }
 
   selectScreen = () => {
@@ -21,9 +22,9 @@ export default class App extends Component {
       case "registration":
         return <RegistrationScreen />
       case "contracting":
-        return <ContractingScreen />
+        return <ContractingScreen goToDetails={this.goToDetails} />
       case "details":
-        return <DetailsScreen />
+        return <DetailsScreen goToContracting={this.goToContracting} jobId={this.state.clickedJobId}/>
       case "card":
         return <CardScreen />
       default:
@@ -40,11 +41,11 @@ export default class App extends Component {
   }
 
   goToContracting = () => {
-    this.setState({ currentScreen: "contracting" })
+    this.setState({ currentScreen: "contracting", clickedJobId: ""})
   }
 
-  goToDetails = () => {
-    this.setState({ currentScreen: "details" })
+  goToDetails = (jobId) => {
+    this.setState({ currentScreen: "details", clickedJobId: jobId})
   }
 
   goToCard = () => {
