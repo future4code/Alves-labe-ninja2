@@ -14,7 +14,7 @@ export default class ContractingScreen extends Component {
     filterMinValue: '',
     filterMaxValue: '',
     filterNameValue: '',
-    filterOrderValue: 1,
+    sortingParameter: '',
   }
 
    /*  FUNÇÕES PARA ATUALIZAR OS INPUTS DOS FILTROS */
@@ -31,8 +31,9 @@ export default class ContractingScreen extends Component {
     this.setState({ filterNameValue: event.target.value })
   }
 
-  handleFilterOrderValue = (event) => {
-    this.setState({ filterOrderValue: event.target.value })
+
+  handleSortingParameter = (event) => {
+    this.setState({ sortingParameter: event.target.value })
   }
 
   /*---------------------------------------------- */
@@ -45,19 +46,20 @@ export default class ContractingScreen extends Component {
     try {
       const res = await axios.get(`${BASE_URL}/jobs`, headers)
       this.setState({ list: res.data.jobs })
-      console.log(this.state.list) // Só para conferir no console
+
     }
     catch (error) {
       console.log(error.response.data.message)
     }
   }
 
+  convertDate = (date) => {
+    const partDate = date.split('T')[0]
+    return partDate.split('-').reverse().join('/')
+  }
 
   render() {
-    
-    <Cart filterCar={this.state.filterCar} list={this.state.list} totalCar={this.state.totalCar} />
 
-    /* FALTA O SORT */
     const displayAllJobs = this.state.list.filter((job) => {
       return this.state.filterMinValue == "" || job.price >= this.state.filterMinValue
     })
@@ -65,22 +67,38 @@ export default class ContractingScreen extends Component {
         return this.state.filterMaxValue == "" || job.price <= this.state.filterMaxValue
       })
       .filter((job) => {
-        return job.title.toLowerCase().includes(this.state.filterNameValue.toLowerCase()) || job.description.toLowerCase().includes(this.state.filterNameValue.toLowerCase())
+
+        return job.title.toLowerCase().includes(this.state.filterNameValue.toLowerCase())
+      })
+      .sort((currentJob, nextJob) => {
+        switch (this.state.sortingParameter) {
+          case "title":
+            return currentJob.title.localeCompare(nextJob.title)
+          case "dueDate":
+            console.log(currentJob.dueDate, nextJob.dueDate)
+            return new Date(currentJob.dueDate).getTime() - new Date(nextJob.dueDate).getTime()
+          case "priceAsc":
+            return currentJob.price - nextJob.price
+          case "priceDesc":
+            return -(currentJob.price - nextJob.price)
+          // default:
+          //   return currentJob.title.localeCompare(nextJob.title)
+
+        }
       })
       .map((job) => {
-        
         return (
 
-          <Flex h='18rem' shadow='dark-lg' borderRadius='2rem' p='1rem' border='1px' bg='blue.200' minW='250px' gap='10px' direction='column' m='5px' key={job.id}>
-            <Heading bg='blue.200' color='beige.200' textAlign='center'>{job.title}</Heading>
-            <Text bg='blue.200' color='beige.200' textAlign='center'>Preço: R${job.price}</Text>
-            <Text bg='blue.200' color='beige.200' textAlign='center'>Prazo: {job.dueDate}</Text>
-            <Flex direction='column' mt='1rem'>
-            <Button bg='beige.200' color='blue.200' rightIcon={<InfoIcon color='red.200' />} iconSpacing='2'
-              onClick={() => this.props.goToDetails(job.id)}>Detalhes</Button>
-            <Button bg='beige.200' color='blue.200' mt='1.2rem' rightIcon={<CheckCircleIcon color='red.200' />} iconSpacing='1'
-            onClick={() => this.props.clickAddJob(job.id)}> Contratar</Button>
-            </Flex>
+          <Flex borderRadius='10px' border='1px' borderColor='purple.700' bg='purple.200' minW='250px' gap='10px' direction='column' m='5px' p='15px' key={job.id}>
+            <Heading textAlign='center'>{job.title}</Heading>
+            <Text>Preço: R${job.price}</Text>
+            <Text>Prazo: {this.convertDate(job.dueDate)}</Text>
+            <Button
+              colorScheme='purple' rightIcon={<InfoIcon />} iconSpacing='2'
+              onClick={() => this.props.goToDetails(job.id)}>Detalhes
+            </Button>
+            <Button colorScheme='purple' rightIcon={<CheckCircleIcon />} iconSpacing='1'>Contratar</Button>
+
           </Flex>
         )
       })
@@ -95,8 +113,7 @@ export default class ContractingScreen extends Component {
             filterMax={this.state.filterMaxValue}
             changeName={this.handleFilterNameValue}
             filterName={this.state.filterNameValue}
-            changeOrder={this.handleFilterOrderValue}
-            filterOrder={this.state.filterOrderValue}
+
           />
         </Box>
         <Flex justify='center' wrap='wrap' mt='20px'>

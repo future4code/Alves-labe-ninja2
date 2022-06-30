@@ -11,9 +11,11 @@ import Cart from './components/Cart/Cart';
 export default class App extends Component {
   state = {
     currentScreen: "home",
+
     clickedJobId: "",
     IdItemsCart: []
    }
+
 
   selectScreen = () => {
     switch (this.state.currentScreen) {
