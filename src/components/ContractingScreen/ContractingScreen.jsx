@@ -11,14 +11,14 @@ import Cart from '../Cart/Cart'
 
 export default class ContractingScreen extends Component {
   state = {
-    list: [],
+    // list: {this.props.list},
     filterMinValue: '',
     filterMaxValue: '',
     filterNameValue: '',
     sortingParameter: '',
-    removeLoading: false,
+    // removeLoading: false,
   }
-
+  newList = [...this.props.list]
   /*  FUNÇÕES PARA ATUALIZAR OS INPUTS DOS FILTROS */
 
   handleFilterMinValue = (event) => {
@@ -41,18 +41,7 @@ export default class ContractingScreen extends Component {
   /*---------------------------------------------- */
 
   componentDidMount() {
-    this.getAllJobs()
-  }
-
-  getAllJobs = async () => {
-    try {
-      const res = await axios.get(`${BASE_URL}/jobs`, headers)
-      this.setState({ list: res.data.jobs })
-      this.setState({ removeLoading: true })
-    }
-    catch (error) {
-      console.log(error.response.data.message)
-    }
+    {this.props.getAllJobs()}
   }
 
   convertDate = (date) => {
@@ -62,7 +51,7 @@ export default class ContractingScreen extends Component {
 
   render() {
 
-    const displayAllJobs = this.state.list.filter((job) => {
+    const displayAllJobs = this.newList.filter((job) => {
       return this.state.filterMinValue == "" || job.price >= this.state.filterMinValue
     })
       .filter((job) => {
@@ -120,7 +109,7 @@ export default class ContractingScreen extends Component {
         <Flex justify='center' wrap='wrap' mt='20px'>
           {displayAllJobs}
         </Flex>
-        {!this.state.removeLoading && <Image pt='13rem' w='18rem' src={Loading} alt='gif loading' />}
+        {/* {!this.state.removeLoading && <Image pt='13rem' w='18rem' src={Loading} alt='gif loading' />} */}
       </Flex>
     )
   }

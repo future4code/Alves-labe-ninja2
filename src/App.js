@@ -7,13 +7,15 @@ import Header from './components/Header/Header'
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
 import Cart from './components/Cart/Cart';
+import axios from 'axios'
+import { BASE_URL, headers } from './constants/credentials'
 
 export default class App extends Component {
   state = {
+    list: [],
     currentScreen: "home",
-
     clickedJobId: "",
-    IdItemsCart: []
+    // IdItemsCart: []
    }
 
 
@@ -24,11 +26,11 @@ export default class App extends Component {
       case "registration":
         return <RegistrationScreen />
       case "contracting":
-        return <ContractingScreen goToDetails={this.goToDetails} clickAddJob={this.clickAddJob} />
+        return <ContractingScreen goToDetails={this.goToDetails} clickAddJob={this.clickAddJob} getAllJobs={this.getAllJobs} list={this.state.list}/>
       case "details":
         return <DetailsScreen goToContracting={this.goToContracting} jobId={this.state.clickedJobId} />
       case "Card" :
-        return <Cart clickAddJob={this.clickAddJob} IdItemsCart={this.state.IdItemsCart}/> 
+        return <Cart clickAddJob={this.clickAddJob} /> 
       default:
         return <div>Erro! Página não encontrada!</div>
     }
@@ -54,12 +56,26 @@ export default class App extends Component {
     this.setState({ currentScreen: "card", clickedJobId: jobId })
   }
 
-  clickAddJob = (jobId) => {
-    console.log("Clicou no add")
-    console.log(jobId)
-    this.state.IdItemsCart = [...this.state.IdItemsCart, jobId]
-    this.setState({IdItemsCart: this.state.IdItemsCart})
+  getAllJobs = async () => {
+    try {
+      const res = await axios.get(`${BASE_URL}/jobs`, headers)
+      this.setState({ list: res.data.jobs })
+      // this.setState({ removeLoading: true })
+      console.log(this.state.list)
+    }
+    catch (error) {
+      console.log(error.response.data.message)
+    }
   }
+
+
+  // clickAddJob = async (jobId) => {
+  //   const body = {"taken": true}
+
+  //   try {
+  //     const res = await axios.post(`${BASE_URL}/jobs/${jobId}`, body, headers)
+  //   }
+  // }
 
   render() {
     return (

@@ -32,7 +32,6 @@ export default class DetailsScreen extends Component {
         taken: res.data.taken
       })
       this.setState({ removeLoading: true })
-      console.log(this.state)
     }
     catch (error) {
       console.log(error.response.data.message)
