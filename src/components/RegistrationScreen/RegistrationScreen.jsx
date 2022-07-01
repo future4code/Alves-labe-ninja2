@@ -79,7 +79,7 @@ export default class RegistrationScreen extends Component {
     render() {
 
         return (
-            <Flex direction='column' mt='1rem' alignItems='center' >
+            <Flex direction='column' pt='1rem' minH='85vh' alignItems='center' bgGradient="linear(to-t, blue.150, beige.200)">
                
                 <Flex shadow='dark-lg' borderRadius='2rem' p='1rem' bg='blue.200' direction="column" w='35rem' h='32rem'>
                     <Text color='beige.200' textAlign='center' fontSize='2rem'>Cadastre-se para ser um Ninja!</Text>

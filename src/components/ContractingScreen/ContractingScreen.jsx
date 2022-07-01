@@ -104,7 +104,7 @@ export default class ContractingScreen extends Component {
       })
 
     return (
-      <Flex direction='column'>
+      <Flex direction='column' minH='85vh' bgGradient="linear(to-t, blue.150, beige.200)">
         <Box>
           <Filters
             changeMin={this.handleFilterMinValue}
