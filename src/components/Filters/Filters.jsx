@@ -28,7 +28,7 @@ export default class Filters extends Component {
                 
                 <Select
                   name ="sort"
-                  focusBorderColor='purple.400'  _placeholder={{opacity: '0.8', color: 'white'}} maxW='300px' bg='purple.300' mt='20px'
+                  focusBorderColor='purple.400'  _placeholder={{opacity: '0.8'}} maxW='300px' mt='20px'
                   placeholder='Ordenar por:'
                   onChange={this.props.changeOrder}
                   onSelect={this.props.filterOrder}
