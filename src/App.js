@@ -28,7 +28,7 @@ export default class App extends Component {
       case "details":
         return <DetailsScreen goToContracting={this.goToContracting} jobId={this.state.clickedJobId} clickAddJob={this.clickAddJob} />
       case "Cart":
-        return <Cart clickAddJob={this.clickAddJob} idItemsCart={this.state.idItemsCart} totalCart={this.state.totalCart} />
+        return <Cart finallyShopping={this.finallyShopping} clickAddJob={this.clickAddJob} idItemsCart={this.state.idItemsCart} totalCart={this.state.totalCart} removeJob={this.removeJob} />
       default:
         return <div>Erro! Página não encontrada!</div>
     }
@@ -57,6 +57,23 @@ export default class App extends Component {
   clickAddJob = (jobId) => {
     this.setState({ idItemsCart: [...this.state.idItemsCart, jobId] })
     this.setState({ totalCart: this.state.totalCart + jobId.price })
+  }
+
+  removeJob = (jobId) => {
+    const newCart = this.state.idItemsCart.filter((item) => {
+      if (item.id !== jobId.id) {
+        return item
+      } else {
+        return false
+      }
+    })
+    this.setState({ idItemsCart: newCart })
+    this.setState({ totalCart: this.state.totalCart - jobId.price })
+  }
+
+  finallyShopping = () => {
+    this.setState({ idItemsCart: [] })
+    this.setState({ totalCart: '' })
   }
 
   render() {

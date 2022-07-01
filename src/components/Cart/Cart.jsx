@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 
+
 export default class Cart extends Component {
   render() {
   const mapCart = this.props.idItemsCart.map((job) => {
@@ -8,7 +9,9 @@ export default class Cart extends Component {
           <p>
             {job.title}
             {job.price}
+            
           </p>
+          <button onClick={() => {this.props.removeJob(job)}}> X</button>
         </div>
       )
     }) 
@@ -17,6 +20,7 @@ export default class Cart extends Component {
     <div>
      <p>{mapCart}</p>
      <p>{this.props.totalCart}</p>
+     <button onClick={() => this.props.finallyShopping()}>FInalizar COmpra</button>
     </div>
     )
   }
