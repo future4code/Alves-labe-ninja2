@@ -56,7 +56,6 @@ export default class DetailsScreen extends Component {
           <Text color='blue.200' fontSize='1.5rem'>Valor: R$ {this.state.price},00</Text>
           <Text color='blue.200' fontSize='1.5rem'>Forma de pagamento: {this.state.payment}</Text>
           <Text color='blue.200' fontSize='1.5rem'>{this.convertDate(this.state.date)}</Text>
-          <Button _hover={{ bg: 'red.200' }} bg='blue.200' color='beige.200' fontSize='1.2rem' w='18rem'>Adicionar ao Carrinho </Button>
           <Button _hover={{ bg: 'red.200' }} bg='blue.200' color='beige.200' fontSize='1.2rem' w='5rem' onClick={this.props.goToContracting}>Voltar</Button>
           </Flex>
         ) : <Image pt='13rem' w='18rem' src={Loading} alt='gif loading' />

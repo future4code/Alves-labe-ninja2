@@ -2,13 +2,12 @@ import React, { Component } from 'react'
 
 export default class Cart extends Component {
   render() {
-    console.log(this.props.idItemsCart)
   const mapCart = this.props.idItemsCart.map((job) => {
-      console.log(this.props.idItemsCart)
       return (
         <div>
           <p>
             {job.title}
+            {job.price}
           </p>
         </div>
       )
@@ -16,8 +15,8 @@ export default class Cart extends Component {
     return (
 
     <div>
-      <p>coisarada</p>
      <p>{mapCart}</p>
+     <p>{this.props.totalCart}</p>
     </div>
     )
   }
