@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import axios from "axios"
 import { BASE_URL, headers } from '../../constants/credentials'
 import Select from 'react-select'
-import { Flex, Alert, AlertIcon, Spacer, Heading, ButtonGroup, Button, Input, Text, Box } from '@chakra-ui/react'
+import { Flex, Button, Input, Text } from '@chakra-ui/react'
 import { toast } from 'react-toastify';
 
 const options = [
@@ -80,7 +80,6 @@ export default class RegistrationScreen extends Component {
 
         return (
             <Flex direction='column' pt='1rem' minH='85vh' alignItems='center' bgGradient="linear(to-t, blue.150, beige.200)">
-               
                 <Flex shadow='dark-lg' borderRadius='2rem' p='1rem' bg='blue.200' direction="column" w='35rem' h='32rem'>
                     <Text color='beige.200' textAlign='center' fontSize='2rem'>Cadastre-se para ser um Ninja!</Text>
                     <Input bg='white' value={this.state.title} onChange={this.handleTitle} mt='8%' mb='4%' placeholder='Título do anúncio'></Input>
@@ -95,7 +94,6 @@ export default class RegistrationScreen extends Component {
                     />
                     <Input bg='white' value={this.state.date} onChange={this.handleDate} type='date' mt='4%' mb='4%' placeholder='Informe o prazo disponível' ></Input>
                     <Button bg='beige.200' color='blue.200' fontSize='1.5rem' onClick={() => this.createNewJob()}>Cadastrar Serviço</Button>
-
                 </Flex>
             </Flex>
         )

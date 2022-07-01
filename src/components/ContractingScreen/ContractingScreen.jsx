@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import axios from "axios"
 import { BASE_URL, headers } from '../../constants/credentials'
-import { Flex, Spacer, Heading, ButtonGroup, Button, Input, Select, Text, Box } from '@chakra-ui/react'
+import { Flex, Spacer, Image, Heading, ButtonGroup, Button, Input, Select, Text, Box } from '@chakra-ui/react'
 import Filters from '../Filters/Filters'
 import { CheckCircleIcon, InfoIcon } from '@chakra-ui/icons'
 import { toast } from 'react-toastify'
+import Loading from '../../assets/ninjagif.gif'
 import Cart from '../Cart/Cart'
 // import DetailsScreen from '../DetailsScreen/DetailsScreen'
 
@@ -15,9 +16,10 @@ export default class ContractingScreen extends Component {
     filterMaxValue: '',
     filterNameValue: '',
     sortingParameter: '',
+    removeLoading: false,
   }
 
-   /*  FUNÇÕES PARA ATUALIZAR OS INPUTS DOS FILTROS */
+  /*  FUNÇÕES PARA ATUALIZAR OS INPUTS DOS FILTROS */
 
   handleFilterMinValue = (event) => {
     this.setState({ filterMinValue: event.target.value })
@@ -46,7 +48,7 @@ export default class ContractingScreen extends Component {
     try {
       const res = await axios.get(`${BASE_URL}/jobs`, headers)
       this.setState({ list: res.data.jobs })
-
+      this.setState({ removeLoading: true })
     }
     catch (error) {
       console.log(error.response.data.message)
@@ -81,30 +83,28 @@ export default class ContractingScreen extends Component {
             return currentJob.price - nextJob.price
           case "priceDesc":
             return -(currentJob.price - nextJob.price)
-          
-
         }
       })
       .map((job) => {
         return (
 
-          <Flex _hover={{bg: 'red.200'}} borderRadius='10px' border='1px'  shadow='dark-lg' bg='blue.200' minW='250px' gap='10px' direction='column' m='5px' p='15px' key={job.id}>
-          <Heading color='beige.200' textAlign='center'>{job.title}</Heading>
-          <Text color='beige.200' textAlign='center'>Preço: R${job.price}</Text>
-          <Text color='beige.200' textAlign='center'>Prazo: {this.convertDate(job.dueDate)}</Text>
-          <Flex direction='column' mt='1rem'>
-          <Button bg='beige.200' color='blue.200' rightIcon={<InfoIcon color='red.200' />} iconSpacing='2' _hover={{bg:'white', color:'blue.200'}}
-            onClick={() => this.props.goToDetails(job.id)}>Detalhes</Button>
-          <Button bg='beige.200' color='blue.200' mt='1.2rem' rightIcon={<CheckCircleIcon color='red.200' />} iconSpacing='1' _hover={{bg:'white', color:'blue.200'}}
-          onClick={() => this.props.clickAddJob(job.id)}> Contratar
-</Button>
+          <Flex _hover={{ bg: 'red.200' }} borderRadius='10px' border='1px' shadow='dark-lg' bg='blue.200' minW='250px' gap='10px' direction='column' m='5px' p='15px' key={job.id}>
+            <Heading color='beige.200' textAlign='center'>{job.title}</Heading>
+            <Text color='beige.200' textAlign='center'>Preço: R${job.price}</Text>
+            <Text color='beige.200' textAlign='center'>Prazo: {this.convertDate(job.dueDate)}</Text>
+            <Flex direction='column' mt='1rem'>
+              <Button bg='beige.200' color='blue.200' rightIcon={<InfoIcon color='red.200' />} iconSpacing='2' _hover={{ bg: 'white', color: 'blue.200' }}
+                onClick={() => this.props.goToDetails(job.id)}>Detalhes</Button>
+              <Button bg='beige.200' color='blue.200' mt='1.2rem' rightIcon={<CheckCircleIcon color='red.200' />} iconSpacing='1' _hover={{ bg: 'white', color: 'blue.200' }}
+                onClick={() => this.props.clickAddJob(job.id)}> Contratar
+              </Button>
+            </Flex>
           </Flex>
-        </Flex>
         )
       })
 
     return (
-      <Flex direction='column' minH='85vh' bgGradient="linear(to-t, blue.150, beige.200)">
+      <Flex direction='column' minH='85vh' alignItems='center'  bgGradient="linear(to-t, blue.150, beige.200)">
         <Box>
           <Filters
             changeMin={this.handleFilterMinValue}
@@ -115,13 +115,12 @@ export default class ContractingScreen extends Component {
             filterName={this.state.filterNameValue}
             changeOrder={this.handleSortingParameter}
             filterOrder={this.state.sortingParameter}
-            
-
           />
         </Box>
         <Flex justify='center' wrap='wrap' mt='20px'>
           {displayAllJobs}
         </Flex>
+        {!this.state.removeLoading && <Image pt='13rem' w='18rem' src={Loading} alt='gif loading' />}
       </Flex>
     )
   }
