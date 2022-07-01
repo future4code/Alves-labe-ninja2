@@ -88,17 +88,18 @@ export default class ContractingScreen extends Component {
       .map((job) => {
         return (
 
-          <Flex borderRadius='10px' border='1px' borderColor='purple.700' bg='purple.200' minW='250px' gap='10px' direction='column' m='5px' p='15px' key={job.id}>
-            <Heading textAlign='center'>{job.title}</Heading>
-            <Text>Preço: R${job.price}</Text>
-            <Text>Prazo: {this.convertDate(job.dueDate)}</Text>
-            <Button
-              colorScheme='purple' rightIcon={<InfoIcon />} iconSpacing='2'
-              onClick={() => this.props.goToDetails(job.id)}>Detalhes
-            </Button>
-            <Button colorScheme='purple' rightIcon={<CheckCircleIcon />} iconSpacing='1'>Contratar</Button>
-
+          <Flex hover='red.200' borderRadius='10px' border='1px'  shadow='dark-lg' bg='blue.200' minW='250px' gap='10px' direction='column' m='5px' p='15px' key={job.id}>
+          <Heading bg='blue.200' color='beige.200' textAlign='center'>{job.title}</Heading>
+          <Text bg='blue.200' color='beige.200' textAlign='center'>Preço: R${job.price}</Text>
+          <Text bg='blue.200' color='beige.200' textAlign='center'>Prazo: {this.convertDate(job.dueDate)}</Text>
+          <Flex direction='column' mt='1rem'>
+          <Button bg='beige.200' color='blue.200' rightIcon={<InfoIcon color='red.200' />} iconSpacing='2'
+            onClick={() => this.props.goToDetails(job.id)}>Detalhes</Button>
+          <Button bg='beige.200' color='blue.200' mt='1.2rem' rightIcon={<CheckCircleIcon color='red.200' />} iconSpacing='1'
+          onClick={() => this.props.clickAddJob(job.id)}> Contratar
+</Button>
           </Flex>
+        </Flex>
         )
       })
 
