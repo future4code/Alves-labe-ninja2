@@ -3,7 +3,7 @@ import axios from 'axios'
 import { BASE_URL, headers } from '../../constants/credentials'
 import { Flex, Center, Spacer, Heading, ButtonGroup, Button, Input, Select, Text, Box, Image } from '@chakra-ui/react'
 import Ninja from '../../assets/ninja.png'
-import Loading from '../../assets/carregando.gif'
+import Loading from '../../assets/ninjagif.gif'
 export default class DetailsScreen extends Component {
   state = {
     title: "",
@@ -56,8 +56,7 @@ export default class DetailsScreen extends Component {
           <Button _hover={{ bg: 'red.200' }} bg='blue.200' color='beige.200' fontSize='1.2rem' w='18rem'>Adicionar ao Carrinho </Button>
           <Button _hover={{ bg: 'red.200' }} bg='blue.200' color='beige.200' fontSize='1.2rem' w='5rem' onClick={this.props.goToContracting}>Voltar</Button>
           </Flex>
-
-        ) : <Image w='18rem' src={Loading} alt='gif loading' />
+        ) : <Image pt='13rem' w='18rem' src={Loading} alt='gif loading' />
       }
 
       </Flex>

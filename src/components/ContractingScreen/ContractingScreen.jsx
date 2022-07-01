@@ -115,8 +115,6 @@ export default class ContractingScreen extends Component {
             filterName={this.state.filterNameValue}
             changeOrder={this.handleSortingParameter}
             filterOrder={this.state.sortingParameter}
-            
-
           />
         </Box>
         <Flex justify='center' wrap='wrap' mt='20px'>
