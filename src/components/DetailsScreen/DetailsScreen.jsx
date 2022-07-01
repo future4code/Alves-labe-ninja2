@@ -50,7 +50,7 @@ export default class DetailsScreen extends Component {
         {this.state.title && this.state.description && this.state.price && this.state.payment && this.state.date ? 
         (
           <Flex direction='column' justifyContent='space-evenly' shadow='dark-lg' alignItems='center' borderRadius='2rem' p='1rem' w='35rem' h='32rem' backgroundColor='red.50' border='2px' borderColor='red.150'>
-          <Image w='8rem' src={Ninja} alt='ícone ' />
+          <Image w='8rem' src={Ninja} alt='Ninja com sacolas ' />
           <Heading color='blue.200' textAlign='center' fontSize='2rem'>{this.state.title}</Heading>
           <Text color='blue.200' fontSize='1.5rem'>Descrição: {this.state.description}</Text>
           <Text color='blue.200' fontSize='1.5rem'>Valor: R$ {this.state.price},00</Text>

@@ -13,9 +13,8 @@ export default class App extends Component {
     currentScreen: "home",
     clickedJobId: "",
     idItemsCart: [],
-    totalCart: 0
+    totalCart: "",
   }
-
 
   selectScreen = () => {
     switch (this.state.currentScreen) {
@@ -56,7 +55,8 @@ export default class App extends Component {
 
   clickAddJob = (jobId) => {
     this.setState({ idItemsCart: [...this.state.idItemsCart, jobId] })
-    this.setState({ totalCart: this.state.totalCart + jobId.price })
+    this.setState({ totalCart: Number(this.state.totalCart) + jobId.price })
+    toast.success("O serviço foi adicionado ao carrinho!")
   }
 
   removeJob = (jobId) => {
@@ -74,8 +74,20 @@ export default class App extends Component {
   finallyShopping = () => {
     this.setState({ idItemsCart: [] })
     this.setState({ totalCart: '' })
+    toast.success("Obrigada pela compra!")
+  }
+ componentDidMount() {
+    const jobString = localStorage.getItem("jobs");
+    const job = JSON.parse(jobString);
+
+    if (job) {
+      this.setState({idItemsCart: job})
+    }
   }
 
+  componentDidUpdate() {
+    localStorage.setItem("jobs", JSON.stringify(this.state.idItemsCart))
+  }
   render() {
 
     return (
