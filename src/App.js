@@ -69,6 +69,12 @@ export default class App extends Component {
     })
     this.setState({ idItemsCart: newCart })
     this.setState({ totalCart: this.state.totalCart - jobId.price })
+    toast(
+      "Poxa, que pena que você desistiu de contratar esse serviço.",
+      {
+        duration: 6000,
+      }
+    );
   }
 
   finallyShopping = () => {
