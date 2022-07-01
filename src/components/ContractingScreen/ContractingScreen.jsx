@@ -87,7 +87,6 @@ export default class ContractingScreen extends Component {
       })
       .map((job) => {
         return (
-
           <Flex _hover={{ bg: 'red.200' }} borderRadius='10px' border='1px' shadow='dark-lg' bg='blue.200' minW='250px' gap='10px' direction='column' m='5px' p='15px' key={job.id}>
             <Heading color='beige.200' textAlign='center'>{job.title}</Heading>
             <Text color='beige.200' textAlign='center'>Preço: R${job.price}</Text>
@@ -96,7 +95,7 @@ export default class ContractingScreen extends Component {
               <Button bg='beige.200' color='blue.200' rightIcon={<InfoIcon color='red.200' />} iconSpacing='2' _hover={{ bg: 'white', color: 'blue.200' }}
                 onClick={() => this.props.goToDetails(job.id)}>Detalhes</Button>
               <Button bg='beige.200' color='blue.200' mt='1.2rem' rightIcon={<CheckCircleIcon color='red.200' />} iconSpacing='1' _hover={{ bg: 'white', color: 'blue.200' }}
-                onClick={() => this.props.clickAddJob(job.id)}> Contratar
+                onClick={() => this.props.clickAddJob(job)}> Contratar
               </Button>
             </Flex>
           </Flex>

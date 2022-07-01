@@ -11,24 +11,23 @@ import Cart from './components/Cart/Cart';
 export default class App extends Component {
   state = {
     currentScreen: "home",
-
     clickedJobId: "",
-    IdItemsCart: []
-   }
+    idItemsCart: []
+  }
 
 
   selectScreen = () => {
     switch (this.state.currentScreen) {
       case "home":
-        return <HomeScreen goToRegistration={this.goToRegistration} goToContracting={this.goToContracting} goToCard={this.goToCard}/>
+        return <HomeScreen goToRegistration={this.goToRegistration} goToContracting={this.goToContracting} goToCard={this.goToCard} />
       case "registration":
         return <RegistrationScreen />
       case "contracting":
         return <ContractingScreen goToDetails={this.goToDetails} clickAddJob={this.clickAddJob} />
       case "details":
         return <DetailsScreen goToContracting={this.goToContracting} jobId={this.state.clickedJobId} />
-      case "Card" :
-        return <Cart clickAddJob={this.clickAddJob} IdItemsCart={this.state.IdItemsCart}/> 
+      case "Cart":
+        return <Cart clickAddJob={this.clickAddJob} idItemsCart={this.state.idItemsCart} />
       default:
         return <div>Erro! Página não encontrada!</div>
     }
@@ -51,17 +50,15 @@ export default class App extends Component {
   }
 
   goToCard = (jobId) => {
-    this.setState({ currentScreen: "card", clickedJobId: jobId })
+    this.setState({ currentScreen: "Cart", clickedJobId: jobId })
   }
 
   clickAddJob = (jobId) => {
-    console.log("Clicou no add")
-    console.log(jobId)
-    this.state.IdItemsCart = [...this.state.IdItemsCart, jobId]
-    this.setState({IdItemsCart: this.state.IdItemsCart})
+    this.setState({ idItemsCart: [...this.state.idItemsCart, jobId] })
   }
 
   render() {
+
     return (
       <div>
         <ToastContainer
@@ -75,7 +72,7 @@ export default class App extends Component {
           draggable
           pauseOnHover
         />
-        <Header goToHome={this.goToHome} goToCard={this.goToCard} />
+        <Header idItemsCart={this.state.idItemsCart} goToHome={this.goToHome} goToCard={this.goToCard} />
         {this.selectScreen()}
       </div>
     )
