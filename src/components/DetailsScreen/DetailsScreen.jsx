@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import { BASE_URL, headers } from '../../constants/credentials'
-import { Flex, Center, Spacer, Heading, ButtonGroup, Button, Input, Select, Text, Box, Image } from '@chakra-ui/react'
+import { Flex, Heading, Button, Text, Image } from '@chakra-ui/react'
 import Ninja from '../../assets/ninja.png'
 import Loading from '../../assets/ninjagif.gif'
+import LoadingInvertido from '../../assets/ninjainvertido.gif'
 export default class DetailsScreen extends Component {
   state = {
     title: "",
@@ -11,7 +12,8 @@ export default class DetailsScreen extends Component {
     price: "",
     payment: [],
     date: "",
-    taken: false
+    taken: false,
+    removeLoading: false,
   }
 
   componentDidMount() {
@@ -29,6 +31,7 @@ export default class DetailsScreen extends Component {
         date: res.data.dueDate,
         taken: res.data.taken
       })
+      this.setState({ removeLoading: true })
       console.log(this.state)
     }
     catch (error) {
