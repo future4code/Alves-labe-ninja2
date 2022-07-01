@@ -11,24 +11,23 @@ import Cart from './components/Cart/Cart';
 export default class App extends Component {
   state = {
     currentScreen: "home",
-
     clickedJobId: "",
-    IdItemsCart: []
-   }
-
+    idItemsCart: [],
+    totalCart: "",
+  }
 
   selectScreen = () => {
     switch (this.state.currentScreen) {
       case "home":
-        return <HomeScreen goToRegistration={this.goToRegistration} goToContracting={this.goToContracting} goToCard={this.goToCard}/>
+        return <HomeScreen goToRegistration={this.goToRegistration} goToContracting={this.goToContracting} goToCard={this.goToCard} />
       case "registration":
         return <RegistrationScreen />
       case "contracting":
         return <ContractingScreen goToDetails={this.goToDetails} clickAddJob={this.clickAddJob} />
       case "details":
-        return <DetailsScreen goToContracting={this.goToContracting} jobId={this.state.clickedJobId} />
-      case "Card" :
-        return <Cart clickAddJob={this.clickAddJob} IdItemsCart={this.state.IdItemsCart}/> 
+        return <DetailsScreen goToContracting={this.goToContracting} jobId={this.state.clickedJobId} clickAddJob={this.clickAddJob} />
+      case "Cart":
+        return <Cart finallyShopping={this.finallyShopping} clickAddJob={this.clickAddJob} idItemsCart={this.state.idItemsCart} totalCart={this.state.totalCart} removeJob={this.removeJob} />
       default:
         return <div>Erro! Página não encontrada!</div>
     }
@@ -51,17 +50,52 @@ export default class App extends Component {
   }
 
   goToCard = (jobId) => {
-    this.setState({ currentScreen: "card", clickedJobId: jobId })
+    this.setState({ currentScreen: "Cart", clickedJobId: jobId })
   }
 
   clickAddJob = (jobId) => {
-    console.log("Clicou no add")
-    console.log(jobId)
-    this.state.IdItemsCart = [...this.state.IdItemsCart, jobId]
-    this.setState({IdItemsCart: this.state.IdItemsCart})
+    this.setState({ idItemsCart: [...this.state.idItemsCart, jobId] })
+    this.setState({ totalCart: Number(this.state.totalCart) + jobId.price })
+    toast.success("O serviço foi adicionado ao carrinho!")
   }
 
+  removeJob = (jobId) => {
+    const newCart = this.state.idItemsCart.filter((item) => {
+      if (item.id !== jobId.id) {
+        return item
+      } else {
+        return false
+      }
+    })
+    this.setState({ idItemsCart: newCart })
+    this.setState({ totalCart: this.state.totalCart - jobId.price })
+    toast(
+      "Poxa, que pena que você desistiu de contratar esse serviço.",
+      {
+        duration: 6000,
+      }
+    );
+  }
+
+  finallyShopping = () => {
+    this.setState({ idItemsCart: [] })
+    this.setState({ totalCart: '' })
+    toast.success("Obrigada pela compra!")
+  }
+ componentDidMount() {
+    const jobString = localStorage.getItem("jobs");
+    const job = JSON.parse(jobString);
+
+    if (job) {
+      this.setState({idItemsCart: job})
+    }
+  }
+
+  componentDidUpdate() {
+    localStorage.setItem("jobs", JSON.stringify(this.state.idItemsCart))
+  }
   render() {
+
     return (
       <div>
         <ToastContainer
@@ -75,7 +109,7 @@ export default class App extends Component {
           draggable
           pauseOnHover
         />
-        <Header goToHome={this.goToHome} goToCard={this.goToCard} />
+        <Header idItemsCart={this.state.idItemsCart} goToHome={this.goToHome} goToCard={this.goToCard} />
         {this.selectScreen()}
       </div>
     )
