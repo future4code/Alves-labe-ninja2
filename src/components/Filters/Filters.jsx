@@ -6,20 +6,20 @@ import { withTheme } from '@emotion/react';
 export default class Filters extends Component {
   render() {
     return (
-      <div>
-            <Flex justify='center' gap='10'>
-                <Input  _placeholder={{opacity: '0.8'}} maxW='300px' mt='20px'
+      <div >
+            <Flex justify='center' gap='10' >
+                <Input _focus={{border: '2px',borderColor:'blue.200', bg:'red.100'}} variant='filled' _placeholder={{opacity: '0.9', color: 'blue.200'}} maxW='300px' mt='20px' border='2px' borderColor='blue.200' textColor='blue.200' boxShadow='base' fontWeight='bold'
                 onChange={this.props.changeName}
                 value={this.props.filterName}
                  placeholder="Busca" 
                 />              
-                <Input   _placeholder={{opacity: '0.8'}} maxW='300px' mt='20px'
+                <Input _focus={{border: '2px',borderColor:'blue.200', bg:'red.100'}} variant='filled' _placeholder={{opacity: '0.9', color: 'blue.200'}} maxW='300px' mt='20px' border='2px' borderColor='blue.200' textColor='blue.200' boxShadow='base' fontWeight='bold'
                 type="number"         
                 onChange={this.props.changeMin} 
                 value={this.props.filterMin}
                 placeholder="Valor mínimo"
                 />
-                <Input   _placeholder={{opacity: '0.8'}} maxW='300px' mt='20px'
+                <Input _focus={{border: '2px',borderColor:'blue.200', bg:'red.100'}} variant='filled' _placeholder={{opacity: '0.9', color: 'blue.200'}} maxW='300px' mt='20px' border='2px' borderColor='blue.200' textColor='blue.200' boxShadow='base' fontWeight='bold'
                 type="number" 
                 onChange={this.props.changeMax} 
                 value={this.props.filterMax} 
@@ -28,7 +28,7 @@ export default class Filters extends Component {
                 
                 <Select
                   name ="sort"
-                  focusBorderColor='purple.400'  _placeholder={{opacity: '0.8'}} maxW='300px' mt='20px'
+                  _focus={{border: '2px',borderColor:'blue.200', bg:'red.100'}} variant='filled'  _placeholder={{opacity: '0.9', color: 'blue.200', bg:'blue.50'}} maxW='300px' mt='20px' border='2px' borderColor='blue.200' textColor='blue.200' boxShadow='base' fontWeight='bold'
                   placeholder='Ordenar por:'
                   onChange={this.props.changeOrder}
                   onSelect={this.props.filterOrder}
