@@ -8,7 +8,7 @@ export default class HomeScreen extends Component {
   render() {
 
     return (
-      <Flex direction='column'alignItems='center' minH='85vh' bgGradient="linear(to-t, blue.150, beige.200)" >
+      <Flex direction='column'alignItems='center' minH='80vh' bgGradient="linear(to-t, blue.150, beige.200)" >
         <Image src={Logo} alt='logo raposa' p="1rem" pr="3.5rem" h='50vh' w='30vw' />
         <ButtonGroup mt='3.7rem'>
         <Button _hover={{bg:'red.200'}} w='13rem' fontSize='1.2rem' color='beige.200' bg='blue.200' onClick={() => this.props.goToContracting()}>Contrate um Ninja!</Button>
