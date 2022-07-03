@@ -89,7 +89,7 @@ export default class Footer extends Component {
                 <ModalHeader>FAQ</ModalHeader>
                 <ModalBody>
                   <Text fontSize='2xl'>P: Tenho alguma garantia do serviço?</Text>
-                  <Text>R: A garantia é oferecida pelo profissional, portanto, vária entre cada um.</Text>
+                  <Text>R: A garantia é oferecida pelo profissional, portanto, varia entre cada um.</Text>
                   <Text fontSize='2xl'>P: Quanto custa?</Text>
                   <Text>R: Não cobramos nada pra o cliente, o valor do serviço é acordado entre o cliente e o profissional.</Text>
                   <Text fontSize='2xl'>P: Não gostei do serviço, e agora?</Text>

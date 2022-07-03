@@ -88,7 +88,7 @@ export default class ContractingScreen extends Component {
       })
       .map((job) => {
         return (
-          <Flex key={job.id} _hover={{ bg: 'red.200' }} borderRadius='10px' border='1px' shadow='dark-lg' bg='blue.200' minW='250px' gap='10px' direction='column' m='5px' p='15px' >
+          <Flex mb='50px' key={job.id} _hover={{ bg: 'red.200' }} borderRadius='10px' border='1px' shadow='dark-lg' bg='blue.200' minW='250px' gap='10px' direction='column' m='5px' p='15px' >
             <Heading color='beige.200' textAlign='center'>{job.title}</Heading>
             <Text color='beige.200' textAlign='center'>Preço: R${job.price}</Text>
             <Text color='beige.200' textAlign='center'>Prazo: {this.convertDate(job.dueDate)}</Text>
@@ -117,7 +117,7 @@ export default class ContractingScreen extends Component {
             filterOrder={this.state.sortingParameter}
           />
         </Box>
-        <Flex justify='center' wrap='wrap' mt='20px'>
+        <Flex justify='center' wrap='wrap' mt='20px' mb='50px'>
           {displayAllJobs}
         </Flex>
         {!this.state.removeLoading && <Image pt='13rem' w='18rem' src={Loading} alt='gif loading' />}
