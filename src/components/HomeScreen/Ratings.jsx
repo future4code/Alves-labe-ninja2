@@ -1,5 +1,10 @@
 import { Badge, Box, chakra, Flex, Image, Text } from "@chakra-ui/react";
 import { StarIcon } from "@chakra-ui/icons";
+import TrabalhadorUm from './img/um.jpg'
+import TrabalhadorDois from './img/dois.jpg'
+import TrabalhadorTres from './img/tres.jpg'
+import TrabalhadorQuatro from './img/quatro.jpg'
+import TrabalhadorCinco from './img/cinco.jpg'
 
 export const Ratings = () => {
 
@@ -35,7 +40,7 @@ export const Ratings = () => {
         m='1'
       >
         <Image
-          src="https://static6.depositphotos.com/1003580/615/i/450/depositphotos_6151014-stock-photo-african-american-man-portrait.jpg"
+          src={TrabalhadorUm}
           alt='Trabalhador' h='55%' w='100%'
           roundedTop="lg"
         />
@@ -100,7 +105,7 @@ export const Ratings = () => {
         m='1'
       >
         <Image
-          src="https://st2.depositphotos.com/1011434/7519/i/450/depositphotos_75196567-stock-photo-handsome-man-smiling.jpg"
+          src={TrabalhadorDois}
           alt='Trabalhador' h='55%' w='100%'
           roundedTop="lg"
         />
@@ -165,7 +170,7 @@ export const Ratings = () => {
         m='1'
       >
         <Image
-          src="https://st2.depositphotos.com/3977247/10637/i/450/depositphotos_106376254-stock-photo-portrait-of-a-casual-smiling.jpg"
+          src={TrabalhadorTres}
           alt='Trabalhador' h='55%' w='100%'
           roundedTop="lg"
         />
@@ -229,7 +234,7 @@ export const Ratings = () => {
         m='1'
       >
         <Image
-          src="https://static8.depositphotos.com/1032489/859/i/450/depositphotos_8599470-stock-photo-long-hair.jpg"
+          src={TrabalhadorQuatro}
           alt='Trabalhador' h='55%' w='100%'
           roundedTop="lg"
         />
@@ -293,7 +298,7 @@ export const Ratings = () => {
         m='1'
       >
         <Image
-          src="https://st.depositphotos.com/1743476/2206/i/450/depositphotos_22064725-stock-photo-happy-smiling-girl.jpg"
+          src={TrabalhadorCinco}
           alt='Trabalhador' h='55%' w='100%'
           roundedTop="lg"
         />

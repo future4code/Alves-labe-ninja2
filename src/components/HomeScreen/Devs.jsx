@@ -41,7 +41,7 @@ const DevsCard = () => {
             fontSize="m"
             color="beige.200"
           >
-            Fullstack Developer
+            Full Stack Developer
           </chakra.span>
         </Box>
       </Box>
