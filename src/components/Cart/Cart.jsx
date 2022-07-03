@@ -26,6 +26,8 @@ export default class Cart extends Component {
           <Box w='28rem' m='2rem' maxH='39rem'  overflowY='auto'>{mapCart}</Box>
           <Text fontWeight='bold' color='blue.200' fontSize='1.5rem'>Valor total: R${this.props.totalCart}</Text>
           <Button mt='1rem' _hover={{ bg: 'red.200' }} bg='blue.200' color='beige.200' fontSize='1.2rem' w='18rem' h='3rem' p='0.7rem' onClick={() => this.props.finallyShopping()}>Finalizar Compra</Button>
+
+          <Button mt='1rem' _hover={{ bg: 'red.200' }} bg='blue.200' color='beige.200' fontSize='1.2rem' w='18rem' h='3rem' p='0.7rem' onClick={() => this.props.goToContracting()}>Sair do carrinho</Button>
         </Flex>
       </Flex>
     )

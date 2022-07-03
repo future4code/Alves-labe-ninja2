@@ -28,7 +28,7 @@ export default class App extends Component {
       case "details":
         return <DetailsScreen goToContracting={this.goToContracting} jobId={this.state.clickedJobId} clickAddJob={this.clickAddJob} />
       case "Cart":
-        return <Cart finallyShopping={this.finallyShopping} clickAddJob={this.clickAddJob} idItemsCart={this.state.idItemsCart} totalCart={this.state.totalCart} removeJob={this.removeJob} />
+        return <Cart finallyShopping={this.finallyShopping} clickAddJob={this.clickAddJob} idItemsCart={this.state.idItemsCart} totalCart={this.state.totalCart} removeJob={this.removeJob} goToContracting={this.goToContracting}/>
       default:
         return <div>Erro! Página não encontrada!</div>
     }
