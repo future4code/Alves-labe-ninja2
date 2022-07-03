@@ -4,6 +4,7 @@ import RegistrationScreen from './components/RegistrationScreen/RegistrationScre
 import ContractingScreen from './components/ContractingScreen/ContractingScreen'
 import DetailsScreen from './components/DetailsScreen/DetailsScreen'
 import Header from './components/Header/Header'
+import Footer from './Footer/Footer'
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
 import Cart from './components/Cart/Cart';
@@ -111,6 +112,7 @@ export default class App extends Component {
         />
         <Header idItemsCart={this.state.idItemsCart} goToHome={this.goToHome} goToCard={this.goToCard} />
         {this.selectScreen()}
+        <Footer/>
       </div>
     )
   }
