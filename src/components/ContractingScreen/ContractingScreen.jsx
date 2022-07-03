@@ -117,7 +117,7 @@ export default class ContractingScreen extends Component {
             filterOrder={this.state.sortingParameter}
           />
         </Box>
-        <Flex justify='center' wrap='wrap' mt='20px'>
+        <Flex justify='center' wrap='wrap' mt='20px' mb='50px'>
           {displayAllJobs}
         </Flex>
         {!this.state.removeLoading && <Image pt='13rem' w='18rem' src={Loading} alt='gif loading' />}
