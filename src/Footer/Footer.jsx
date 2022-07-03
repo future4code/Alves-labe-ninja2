@@ -51,7 +51,30 @@ export default class Footer extends Component {
         )
       }
 
-     
+      const Contact = () => {
+        const { isOpen, onOpen, onClose } = useDisclosure()
+      
+        return (
+          <>
+            <Button textTransform="uppercase" color='beige.200'variant='link' onClick={onOpen}>Contato</Button>
+      
+            <Modal onClose={onClose} isOpen={isOpen} isCentered>
+              <ModalOverlay />
+              <ModalContent  bg='beige.200'>
+                <ModalHeader>Atendimento</ModalHeader>
+                <ModalBody>
+                  <Text>Nosso atendimento está dispónivel das 9h às 18h através das nossas redes sociais ou:</Text>
+                  <Text>Tel: +00 (00) 0000-0000</Text>
+                  <Text>E-mail: sac@foxninjas.com</Text>
+                </ModalBody>
+                <ModalFooter>
+                  <Button _hover={{bg:'red.200'}} color='beige.200' bg='blue.200' onClick={onClose}>Fechar</Button>
+                </ModalFooter>
+              </ModalContent>
+            </Modal>
+          </>
+        )
+      }
     
     return (
         <Box
@@ -91,7 +114,7 @@ export default class Footer extends Component {
               <AboutUs/>
             </Flex>
             <Flex justify="start" direction="column">
-              <Link textTransform="uppercase">Contato</Link>
+              <Contact/>
             </Flex>
           </HStack>
           <HStack
