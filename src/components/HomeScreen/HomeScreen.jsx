@@ -38,7 +38,7 @@ export default class HomeScreen extends Component {
               color="blue.200"
               fontSize={{ md: "lg" }}
             >
-              Temos diversos tipos de profissionais cadastrados oferecendo seus serviços. Você pode verificar com antecedência o preço e formas de pagamentos de cada profissional, assim como, seu prazo disponível para aquele serviço.
+              Temos diversos tipos de profissionais cadastrados oferecendo seus serviços. Você pode verificar com antecedência o preço e formas de pagamentos de cada profissional, assim como seu prazo disponível para aquele serviço.
             </chakra.p>
             <Center>
               <Button _hover={{ bg: 'red.200' }} w='15rem' h='3rem' fontSize='1.4rem' color='beige.200' bg='blue.200' onClick={() => this.props.goToContracting()}>Contrate um Ninja!</Button>
