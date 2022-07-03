@@ -56,7 +56,7 @@ export default class Footer extends Component {
       
         return (
           <>
-            <Button textTransform="uppercase" color='beige.200'variant='link' onClick={onOpen}>Contato</Button>
+            <Button textTransform="uppercase" color='beige.200'variant='link' onClick={onOpen} >Contato</Button>
       
             <Modal onClose={onClose} isOpen={isOpen} isCentered>
               <ModalOverlay />
@@ -66,6 +66,36 @@ export default class Footer extends Component {
                   <Text>Nosso atendimento está dispónivel das 9h às 18h através das nossas redes sociais ou:</Text>
                   <Text>Tel: +00 (00) 0000-0000</Text>
                   <Text>E-mail: sac@foxninjas.com</Text>
+                </ModalBody>
+                <ModalFooter>
+                  <Button _hover={{bg:'red.200'}} color='beige.200' bg='blue.200' onClick={onClose}>Fechar</Button>
+                </ModalFooter>
+              </ModalContent>
+            </Modal>
+          </>
+        )
+      }
+
+      const Faq = () => {
+        const { isOpen, onOpen, onClose } = useDisclosure()
+      
+        return (
+          <>
+            <Button textTransform="uppercase" color='beige.200'variant='link' onClick={onOpen}>Faq</Button>
+      
+            <Modal onClose={onClose} isOpen={isOpen} isCentered>
+              <ModalOverlay />
+              <ModalContent  bg='beige.200'>
+                <ModalHeader>FAQ</ModalHeader>
+                <ModalBody>
+                  <Text fontSize='2xl'>P: Tenho alguma garantia do serviço?</Text>
+                  <Text>R: A garantia é oferecida pelo profissional, portanto, vária entre cada um.</Text>
+                  <Text fontSize='2xl'>P: Quanto custa?</Text>
+                  <Text>R: Não cobramos nada pra o cliente, o valor do serviço é acordado entre o cliente e o profissional.</Text>
+                  <Text fontSize='2xl'>P: Não gostei do serviço, e agora?</Text>
+                  <Text>R: Entre em contato conosco caso o profissional contratado tenha faltado com profissionalismo.</Text>
+                  <Text fontSize='2xl'>P: Tenho mais dúvidas, com quem falo?</Text>
+                  <Text>R: Entre em contato conosco, teremos muito prazer em conversar com você 🥰</Text>
                 </ModalBody>
                 <ModalFooter>
                   <Button _hover={{bg:'red.200'}} color='beige.200' bg='blue.200' onClick={onClose}>Fechar</Button>
@@ -132,7 +162,7 @@ export default class Footer extends Component {
             }}
           >
             <Flex justify="start" direction="column">
-              <Link textTransform="uppercase">FAQ</Link>
+              <Faq/>
             </Flex>
             <Flex justify="start" direction="column">
               <Link textTransform="uppercase">Trabalhe conosco</Link>
