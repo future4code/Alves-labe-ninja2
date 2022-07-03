@@ -1,9 +1,9 @@
-### Fox Ninjas
+## Fox Ninjas
 
-## Acesso ao site
+# Acesso ao site
 Acesse aqui: https://foxninjas-alves.surge.sh/
 
-## Sobre
+# Sobre
 O site Fox Ninjas, com uma interface limpa e intuitiva, realiza a intermediação entre a pessoa que deseja contratar um serviço e o prestador de serviço. De uma forma fácil e simplificada, o usuário, em poucos mínutos, encontra um profissional que pode resolver seu problema.
 
 # O que você encontrará no site:
@@ -23,7 +23,7 @@ O site Fox Ninjas, com uma interface limpa e intuitiva, realiza a intermediaçã
 - Responsividade
 - Implementamos o desafio de o usuário poder adicionar o produto apenas uma vez ao carrinho, mas em decorrência de alguns pequenos problemas quando entramos em fase de testes, decidimos não aplicar. No carrinho também temos um problema de quando adicionamos mais de uma vez o mesmo produto: quando clicamos para deletar apenas um, todos são deletados, mas o valor é excluido apenas de um produto.
 
-## Tecnologias utilizadas:
+# Tecnologias utilizadas:
 
 - React
 - Axios
@@ -31,13 +31,13 @@ O site Fox Ninjas, com uma interface limpa e intuitiva, realiza a intermediaçã
 - JavaScript
 - Toast React
 
-## Paleta de Cores: 
+# Paleta de Cores: 
 
 Decidimos a paleta de cores de acordo com o ninja escolhido para representar a marca: 
 
 ![Paleta Adobe](./imagens-readme/paleta.jpeg)
 
-## Desenvolvido por:
+# Desenvolvido por:
 
 - Andressa Urbano de Sousa Darzé
 - David Henrique Souza da Silva
