@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
-import { Button, Flex, Image, Center, Box, chakra } from '@chakra-ui/react'
+import { Button, Flex, Image, Center, Box, chakra, Heading } from '@chakra-ui/react'
 import Logo from '../../assets/logo.png'
 import { Ratings } from './Ratings'
+import Devs from './Devs'
+import David from './img/david-perfil.jpg'
 
 
 export default class HomeScreen extends Component {
@@ -69,11 +71,34 @@ export default class HomeScreen extends Component {
           </Box>
         </Flex>)
     }
+
+
+
     return (
       <Flex direction='column' alignItems='center' minH='80vh' bgGradient="linear(to-t, blue.150, beige.200)" >
         <Image src={Logo} alt='logo raposa' p="1rem" pr="3.5rem" h='50vh' w='30vw' />
         <CardHome />
         <Ratings />
+        <Center mb='15px'>
+        <chakra.h2
+              mb={4}
+              fontSize={{ base: "2xl", md: "4xl" }}
+              fontWeight="bold"
+              textAlign='center'
+              color="blue.200"
+              lineHeight={{ md: "shorter" }}
+              textShadow="2px 0 currentcolor"
+            >
+              Desenvolvido por:
+            </chakra.h2>
+        </Center>
+        <Flex mb='2em'>
+          <Devs image={David} name="David" link="https://www.linkedin.com/in/david-henrique-2a9135238/" />
+          <Devs image={David} name="David" link="https://www.linkedin.com/in/david-henrique-2a9135238/" />
+          <Devs image={David} name="David" link="https://www.linkedin.com/in/david-henrique-2a9135238/" />
+          <Devs image={David} name="David" link="https://www.linkedin.com/in/david-henrique-2a9135238/" />
+          <Devs image={David} name="David" link="https://www.linkedin.com/in/david-henrique-2a9135238/" />
+        </Flex>
       </Flex>
     )
   }
