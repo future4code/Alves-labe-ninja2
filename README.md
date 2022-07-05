@@ -1,70 +1,61 @@
-# Getting Started with Create React App
+# Fox Ninjas
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Acesso ao site
+Acesse aqui: https://foxninjas-alves.surge.sh/
 
-## Available Scripts
+# Sobre
+O site Fox Ninjas, com uma interface limpa e intuitiva, realiza a intermediação entre a pessoa que deseja contratar um serviço e o prestador de serviço. De uma forma fácil e simplificada, o usuário, em poucos mínutos, encontra um profissional que pode resolver seu problema.
 
-In the project directory, you can run:
+# O que você encontrará no site:
 
-### `npm start`
+- Cadastrar serviço: o prestador de serviço pode cadastrar o serviço informando o nome, descrição, preço, formas de pagamento e prazo em que ficará disponível.
+- Contratar serviço: o usuário pode navegar na página de serviços disponíveis, tendo a opção de clicar em um botão para ver mais detalhes, ocasião na qual será direcionado para outra página que conterá todas as informações sobre o serviço ou poderá clicar diretamente na opção contratar, o que faz com que o serviço seja adicionado ao carrinho.
+- Carrinho de compras: no carrinho o usuário poderá verificar os produtos adicionados, tendo a opção de deletar cada um dos serviços do carrinho. Poderá também visualizar o valor total dos serviços adicionados. Encontrará também um botão que possibilitará retornar para a tela de contratação para que possa contratar mais serviços.
+- Destaques do mês: os profissionais que se destacaram na prestação de serviços durante o mês corrente.
+- Desenvolvedores: Foto de cada um dos desenvolvedores. Com um clique no nome, o usuário é redirecionado para o linkedin.
+- Rodapé: no rodapé o usuário encontra informações sobre a empresa, como entrar em contato, perguntas frequentes, como trabalhar conosco e redes sociais.
+- Filtros: existe a opção de o usuário ordenar os produtos por preço (crescente ou decrescente) ou também por título e prazo. O usuário pode procurar os produtos por valor mínimo e máximo e também por nome.
+- Carregando: implementamos o desafio de colocar um gif enquando a página carrega.
+- Toast: através da biblioteca toast do React colocamos alerts personalizados quando o usuário clica em contratar serviço, quando clica em deletar serviço do carrinho ou em finalizar compra.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+# O que não funciona:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Responsividade
+- Implementamos o desafio de o usuário poder adicionar o produto apenas uma vez ao carrinho, mas em decorrência de alguns pequenos problemas quando entramos em fase de testes, decidimos não aplicar. No carrinho também temos um problema de quando adicionamos mais de uma vez o mesmo produto: quando clicamos para deletar apenas um, todos são deletados, mas o valor é excluido apenas de um produto.
 
-### `npm test`
+# Tecnologias utilizadas:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- React
+- Axios
+- Chakra UI
+- JavaScript
+- Toast React
 
-### `npm run build`
+# Paleta de Cores: 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Decidimos a paleta de cores de acordo com o ninja escolhido para representar a marca: 
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+![Paleta Adobe](./imagens-readme/paleta.jpeg)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# Desenvolvido por:
 
-### `npm run eject`
+- Andressa Urbano de Sousa Darzé
+- David Henrique Souza da Silva
+- Lucas Magalhães Pacheco
+- Nicole Prim
+- Raquel Baptista Burger
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+O projeto foi desenvolvido em equipe. Todos foram extremamente importantes para que fosse alcançado o resultado final. A comunicação foi sempre tranquila e as decisões tomadas todas em conjunto.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+![Devs](./imagens-readme/devs.png)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+# Imagens:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+![Cadastro](./imagens-readme/cadastro.png)
+![Carrinho](./imagens-readme/carrinho.png)
+![Filtros e Cards](./imagens-readme/filtrosecards.png)
+![Footer](./imagens-readme/footer.png)
+![Home](./imagens-readme/Home.png)
+![toast](./imagens-readme/toastdois.png)
+![toast](./imagens-readme/toastum.png)
+![toast](./imagens-readme/toasttres.png)
